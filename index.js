@@ -62,3 +62,50 @@ app.get('/webhook', (req, res) => {
     }
   }
 });
+
+<!DOCTYPE html>
+<head>
+</head>
+<body>
+<center>
+<h1>Login Page</h1>
+<div class="fb-send-to-messenger" 
+  messenger_app_id="1717939841671057" 
+  page_id="101158777959833"
+  data-ref="optin.ref",
+  color="blue" 
+  size="large">
+</div>
+<script>
+ window.fbAsyncInit = function() {
+	FB.init({
+	appId : '1717939841671057',
+	cookie : true, // enable cookies to allow the server to access
+	// the session
+	xfbml : true, // parse social plugins on this page
+	version : 'v2.2' // use version 2.2
+});
+
+   FB.Event.subscribe('send_to_messenger', function(e) {
+      // callback for events triggered by the plugin
+     if ( e.event == 'clicked' ) {
+	console.log(e.data);		
+     };
+            //console.log(e);
+      });
+  };
+
+  (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+</body>
+</html>
